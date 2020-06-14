@@ -26,6 +26,11 @@ h2 {
     font-weight: lighter;
 }
 
+label {
+    font-size: 34px;
+    font-weight: lighter;
+}
+
 
 .hide {
     display: none;

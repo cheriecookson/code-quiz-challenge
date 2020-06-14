@@ -29,14 +29,28 @@
 <!--  Final Score -->
     <section id="finalScore" class="hide">
         <h1>All Done!</h1>
-        <h2>Your Final Score Is</h2>
-        <h2>Enter Initials:</h2>
+        <h2>Your Final Score Is___.</h2>
+        <form method="POST">
+            <div class="input-group">
+              <label for="email">Enter Initials:</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+              />
+            </div>
+            
         <button id="submitBtn">Submit</button>
+    </form>
     </section>
 
 <!-- High Score -->
     <section id="highScore" class="hide">
-        <h1>High Scores</h1>
+        <div class="card">
+            <h1>High Scores</h1>
+            <p><strong></strong> <span id="user-email"></span></p>
+        </div>
+    <!-- score output goes here -->
         <button class="buttons" id="goBackBtn">Go Back</button>
         <button class="buttons" id="clearBtn">Clear High Scores</button>
     </section>

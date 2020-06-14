@@ -1,16 +1,20 @@
 var startBtn=document.getElementById("startBtn");
-var startSection=document.getElementById("start");
+ var startSection=document.getElementById("start");
 var answerBtn1=document.getElementById("answerBtn1");
 var answerBtn2=document.getElementById("answerBtn2");
 var answerBtn3=document.getElementById("answerBtn3");
 var answerBtn4=document.getElementById("answerBtn4");
 var quizSection=document.getElementById("quiz");
-// var question=document.getElementById("question");
+ // var question=document.getElementById("question");
 var submitBtn=document.getElementById("submitBtn");
 var finalScoreSection=document.getElementById("finalScore");
 var goBackBtn=document.getElementById("goBackBtn");
 var clearBtn=document.getElementById("clearBtn");
 var highScoreSection=document.getElementById("highScore");
+
+var emailInput = document.querySelector("#email");
+var userEmailSpan = document.querySelector("#user-email");
+
 
 
 // var questions = [
@@ -29,7 +33,21 @@ var highScoreSection=document.getElementById("highScore");
 //     }
 // ];
 
+function renderLastRegistered() {
+    var email = localStorage.getItem("email");
+    if (email === null) {
+      return;
+    } userEmailSpan.textContent = email;
 
+  } renderLastRegistered();
+
+  
+  submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var email = document.querySelector("#email").value;
+    localStorage.setItem("email", email);
+      renderLastRegistered();
+  });
 
 
 function startButtonHandler () {

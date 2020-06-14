@@ -9,43 +9,36 @@
 <body>
 
 <!-- Start -->
-    <section id="start">
-    
-    <h1>Coding Quiz Challenge!</h1>
-        <p>Instructions for the quiz go here.</p>
-        <button id="startBtn">Start Quiz</button>
-
+    <section class="start" id="start">
+        <h1>Coding Quiz Challenge!</h1>
+        <h2>Instructions for the quiz go here.</h2>
+            <button class="startBtn" id="startBtn">Start Quiz</button>
     </section>
-
-
-
 
 <!-- Quiz section with 5 multi choice questions -->
     <section id="quiz" class="hide">
-        <h1>Question</h1>
-        <button id="answerBtn">Answer 1</button>
-        <button id="answerBtn">Answer 2</button>
-        <button id="answerBtn">Answer 3</button>
-        <button id="answerBtn">Answer 4</button>
-
+        <div id="question"></div>
+        <div class="container">
+            <button id="answerBtn1">1. Answer</button>
+            <button id="answerBtn2">2. Answer</button>
+            <button id="answerBtn3">3. Answer</button>
+            <button id="answerBtn4">4. Answer</button>
+        </div>
     </section>
 
-
-
 <!--  Final Score -->
-    <section id="fini" class="hide">
-        <h1>Quiz Complete</h1>
+    <section id="finalScore" class="hide">
+        <h1>All Done!</h1>
+        <h2>Your Final Score Is</h2>
+        <h2>Enter Initials:</h2>
         <button id="submitBtn">Submit</button>
-
-        </form>
-
-
     </section>
 
 <!-- High Score -->
     <section id="highScore" class="hide">
         <h1>High Scores</h1>
-        <button id="goBackBtn">Go Back</button>
+        <button class="buttons" id="goBackBtn">Go Back</button>
+        <button class="buttons" id="clearBtn">Clear High Scores</button>
     </section>
 
 

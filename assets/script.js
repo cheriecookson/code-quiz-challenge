@@ -11,78 +11,81 @@ var submitBtn=document.getElementById("submitBtn");
 var finalScoreSection=document.getElementById("finalScore");
 var goBackBtn=document.getElementById("goBackBtn");
 var clearBtn=document.getElementById("clearBtn");
-var highScoreSection=document.getElementById("highScore");
+var highScoreSection=document.getElementById("#highScore");
 
-var emailInput = document.querySelector("#email");
-var userEmailSpan = document.querySelector("#user-email");
+var initialsInput = document.querySelector("#initials");
+var userinitialsSpan = document.querySelector("#user-initials");
 
 
     quiz = [
     {
-        question : "Ask a good qestion for question one?",
-        answerBtn1 : "Answer 1",
-        answerBtn2 : "Answer 2",
-        answerBtn3 : "Answer 3",
-        answerBtn3 : "Answer 4",
+        question : "Inside which HTML element do we put the JavaScript?",
+        answerBtn1 : "<js>",
+        answerBtn2 : "<javascript>",
+        answerBtn3 : "<script>",
+        answerBtn4 : "<scripting",
+        correctAnswer : "<script>",
     },{
-        question : "Ask a really good qestion for question two?",
-        answerBtn1 : "Answer 1",
-        answerBtn2 : "Answer 2",
-        answerBtn3 : "Answer 3",
-        answerBtn3 : "Answer 4",
+        question : "Where is the correct place to insert a JavaScript?",
+        answerBtn1 : "The <head> section",
+        answerBtn2 : "The <body> section",
+        answerBtn3 : "Both <head> and <body>",
+        answerBtn4 : "None of the above",
+        correctAnswer : "The <body> section",
     },{
-        question : "Ask a really really good qestion for question three?",
-        answerBtn1 : "Answer 1",
-        answerBtn2 : "Answer 2",
-        answerBtn3 : "Answer 3",
-        answerBtn3 : "Answer 4",
+        question : "How does a FOR loop start?",
+        answerBtn1 : "for (i <= 5; i++)",
+        answerBtn2 : "for (i = 0; i <= 5; i++)",
+        answerBtn3 : "for (i = 0; i <= 5)",
+        answerBtn4 : "for i = 1 to 5",
+        correctAnswer : "for (i = 0; i <= 5; i++)",
     }
     ];
 
+    function renderQuestion(qArray) {
+        for (var i = 0; i < qArray.length; i++){
+            question.innerHTML=quiz[0].question;
+            question.innerHTML=quiz[1].question;
+            question.innerHTML=quiz[2].question;
+        }
+    }
 
-// ********** Trying to figure this part out ***********
-    //   // We start the game with a score of 0.
-    //   var score = 0;
 
-    //   // Loop over every question object
-    //   for (var i = 0; i < quiz.length; i++) {
-    //     // Display current question to user and ask OK/Cancel
-    //     var answer = confirm(quiz[i].question);
-
-    //     // Compare answers
-    //     if (
-    //       (answer === true && quiz[i].a === 't') ||
-    //       (answer === false && quiz[i].a === 'f')
-    //     ) {
-    //       // Increase score
-    //       score++;
-    //       alert('Correct!');
-    //     } else {
-    //       alert('Wrong!');
-    //     }
-    //   }
-// *******************************************************************
 
 // Local storage function
 function renderLastRegistered() {
-    var email = localStorage.getItem("email");
-    if (email === null) {
+    var initials = localStorage.getItem("initials");
+    if (initials === null) {
       return;
-    } userEmailSpan.textContent = email;
+    } userinitialsSpan.textContent = initials;
 
   } renderLastRegistered();
 
   submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    var email = document.querySelector("#email").value;
-    localStorage.setItem("email", email);
+    var initials = document.querySelector("#initials").value;
+    localStorage.setItem("initials", initials);
       renderLastRegistered();
 // Clear storage not working ****************************
-      localStorage.clear("email", email);
+      localStorage.clear("initials", initials);
   });
 
 
+  // Timer Countdown
+  var timeleft = 60;
+  var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      document.getElementById("countdown").innerHTML = "Finished";
+    } else {
+      document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+    }
+    timeleft -= 1;
+  }, 1000);
 
+// Need to combine timeleft with score in order to decrease time per wrong answer
+  
+    
 function startButtonHandler () {
     startSection.className="hide";
     quizSection.classList.remove("hide");
@@ -100,7 +103,7 @@ function submitButtonHandler () {
 
 function goBackButtonHandler () {
     finalScoreSection.classList.remove("hide");
-    highScoreSection.className="hide";
+    highScorehighScoreSection.className="hide";
 }
 
 function clearButtonHandler () {

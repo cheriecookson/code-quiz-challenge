@@ -6,6 +6,12 @@
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
+<header>
+    <a href="highScore" class="head-right">'Click' to View High Score</a>
+    <p class="head-left">Time: <span id="timer"></span></p>
+</header>
+
 <body>
 
 <!-- Start -->
@@ -17,19 +23,20 @@
 
 <!-- Quiz section with 5 multi choice questions -->
     <section id="quiz" class="hide">
-        <div id="question"></div>
-        <div class="container">
+            <h1 id="question">Question goes here?</h1>
             <button id="answerBtn1">1. Answer</button>
             <button id="answerBtn2">2. Answer</button>
             <button id="answerBtn3">3. Answer</button>
             <button id="answerBtn4">4. Answer</button>
-        </div>
+ 
+            <h3 id="confirm"></h3>
+        </div>    
     </section>
 
 <!--  Final Score -->
     <section id="finalScore" class="hide">
         <h1>All Done!</h1>
-        <h2>Your Final Score Is___.</h2>
+        <h2>Your Final Score Is <span id="score"></span>.</h2>
         <form method="POST">
             <div class="input-group">
               <label for="email">Enter Initials:</label>
@@ -46,10 +53,10 @@
 
 <!-- High Score -->
     <section id="highScore" class="hide">
-        <div class="card">
+        <!-- <div class="card"> -->
             <h1>High Scores</h1>
-            <p><strong></strong> <span id="user-email"></span></p>
-        </div>
+            <h3><span id="user-email"></span> - <span id="score"></span></h3>
+        <!-- </div> -->
     <!-- score output goes here -->
         <button class="buttons" id="goBackBtn">Go Back</button>
         <button class="buttons" id="clearBtn">Clear High Scores</button>

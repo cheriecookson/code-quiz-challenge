@@ -6,7 +6,6 @@ var answerBtn3=document.getElementById("answerBtn3");
 var answerBtn4=document.getElementById("answerBtn4");
 var quizSection=document.getElementById("quiz");
 var question=document.getElementById("question");
-var confirm=document.getElementById("confirm");
 var submitBtn=document.getElementById("submitBtn");
 var finalScoreSection=document.getElementById("finalScore");
 var goBackBtn=document.getElementById("goBackBtn");
@@ -17,7 +16,7 @@ var initialsInput = document.querySelector("#initials");
 var userinitialsSpan = document.querySelector("#user-initials");
 
 
-    quiz = [
+    var quiz = [
     {
         question : "Inside which HTML element do we put the JavaScript?",
         answerBtn1 : "<js>",
@@ -42,11 +41,19 @@ var userinitialsSpan = document.querySelector("#user-initials");
     }
     ];
 
-    function renderQuestion(qArray) {
-        for (var i = 0; i < qArray.length; i++){
-            question.innerHTML=quiz[0].question;
-            question.innerHTML=quiz[1].question;
-            question.innerHTML=quiz[2].question;
+    var qIndex = 0;
+
+    function renderQuestion(index) {
+        question.innerHTML = quiz[index].question;
+        answerBtn1.innerText = quiz[index].answerBtn1;
+        answerBtn2.innerText = quiz[index].answerBtn2;
+        answerBtn3.innerText = quiz[index].answerBtn3;
+        answerBtn4.innerText = quiz[index].answerBtn4;
+    }
+
+    function confirmAnswer(ans) {
+        if (ans !== quiz[qIndex].correctAnswer) {
+            timeleft -= 10;
         }
     }
 
@@ -73,15 +80,16 @@ function renderLastRegistered() {
 
   // Timer Countdown
   var timeleft = 60;
-  var downloadTimer = setInterval(function(){
-    if(timeleft <= 0){
-      clearInterval(downloadTimer);
-      document.getElementById("countdown").innerHTML = "Finished";
-    } else {
-      document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
-    }
-    timeleft -= 1;
-  }, 1000);
+  var downloadTimer;
+//   var downloadTimer = setInterval(function(){
+//     if(timeleft <= 0){
+//       clearInterval(downloadTimer);
+//       document.getElementById("countdown").innerHTML = "Finished";
+//     } else {
+//       document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+//     }
+//     timeleft -= 1;
+//   }, 1000);
 
 // Need to combine timeleft with score in order to decrease time per wrong answer
   
@@ -89,11 +97,43 @@ function renderLastRegistered() {
 function startButtonHandler () {
     startSection.className="hide";
     quizSection.classList.remove("hide");
+
+    reset ();
+        
+   downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+          clearInterval(downloadTimer);
+          document.getElementById("countdown").innerHTML = "Finished";
+        } else {
+          document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+        }
+        timeleft -= 1;
+      }, 1000);
+
+    renderQuestion(qIndex);
 }
 
-function answerButtonHandler () {
-    quizSection.className="hide";
-    finalScoreSection.classList.remove("hide");
+function reset () {
+    qIndex = 0;
+    clearInterval (downloadTimer);
+    timeleft = 60;
+}
+
+function answerButtonHandler (event) {
+  var id = event.target.id;
+  var ans = quiz[qIndex][id];
+    confirmAnswer(ans);
+    console.log (ans);
+
+       qIndex++;
+    if (qIndex < quiz.length){
+        
+        renderQuestion(qIndex);
+    } else {
+        quizSection.className="hide";
+        finalScoreSection.classList.remove("hide");
+        clearInterval (downloadTimer);
+    }
 }
 
 function submitButtonHandler () {

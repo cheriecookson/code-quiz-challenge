@@ -2,10 +2,10 @@
     box-sizing: content-box;
 }
 
-/* header {
+header {
     display: inline;
 
-} */
+}
 
 .head-right {
     text-align: right;

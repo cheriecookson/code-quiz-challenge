@@ -1,5 +1,16 @@
-* {
-    box-sizing: content-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: left;
+    margin: 50px;
+    font-size: 24px;
+    padding: 25px 500px 100px;
+    
 }
 
 header {
@@ -23,14 +34,7 @@ header {
     /* display: inline; */
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-    margin: 50px;
-    font-size: 24px;
-    padding: 25px 500px 100px;
-    
-}
+
 #start {
     text-align: center;
 

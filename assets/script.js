@@ -38,7 +38,21 @@ var userinitialsSpan = document.querySelector("#user-initials");
         answerBtn3 : "for (i = 0; i <= 5)",
         answerBtn4 : "for i = 1 to 5",
         correctAnswer : "for (i = 0; i <= 5; i++)",
-    }
+    },{
+        question : "How can you make a numbered list?",
+        answerBtn1 : "<ol>",
+        answerBtn2 : "<ul>",
+        answerBtn3 : "<dl>",
+        answerBtn4 : "<list>",
+        correctAnswer : "<ol>",
+    },{
+        question : "Which HTML element is used to specify a footer for a document or section?",
+        answerBtn1 : "<footer>",
+        answerBtn2 : "<section>",
+        answerBtn3 : "<home>",
+        answerBtn4 : "<bottom>",
+        correctAnswer : "<footer>",
+    }       
     ];
 
     var qIndex = 0;
@@ -57,43 +71,31 @@ var userinitialsSpan = document.querySelector("#user-initials");
         }
     }
 
-
-
 // Local storage function
-function renderLastRegistered() {
+function storeUser() {
     var initials = localStorage.getItem("initials");
     if (initials === null) {
       return;
     } userinitialsSpan.textContent = initials;
 
-  } renderLastRegistered();
+  } storeUser();
 
   submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var initials = document.querySelector("#initials").value;
     localStorage.setItem("initials", initials);
-      renderLastRegistered();
-// Clear storage not working ****************************
-      localStorage.clear("initials", initials);
+      storeUser();
   });
 
-
-  // Timer Countdown
-  var timeleft = 60;
-  var downloadTimer;
-//   var downloadTimer = setInterval(function(){
-//     if(timeleft <= 0){
-//       clearInterval(downloadTimer);
-//       document.getElementById("countdown").innerHTML = "Finished";
-//     } else {
-//       document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
-//     }
-//     timeleft -= 1;
-//   }, 1000);
-
-// Need to combine timeleft with score in order to decrease time per wrong answer
+  clearBtn.addEventListener('click', function() {
+    localStorage.clear();
+   });
   
-    
+
+// Timer Countdown
+var timeleft = 60;
+var downloadTimer;
+
 function startButtonHandler () {
     startSection.className="hide";
     quizSection.classList.remove("hide");
@@ -111,6 +113,7 @@ function startButtonHandler () {
       }, 1000);
 
     renderQuestion(qIndex);
+ 
 }
 
 function reset () {
@@ -142,17 +145,15 @@ function submitButtonHandler () {
 }
 
 function goBackButtonHandler () {
-    finalScoreSection.classList.remove("hide");
-    highScorehighScoreSection.className="hide";
+    highScoreSection.className="hide";
+    startSection.classList.remove("hide");
 }
 
-function clearButtonHandler () {
+ function clearButtonHandler () {
     highScoreSection.className="hide";
     startSection.classList.remove("hide");
     
-}
-
-
+ }
 
 startBtn.addEventListener("click", startButtonHandler);
 answerBtn1.addEventListener("click", answerButtonHandler);

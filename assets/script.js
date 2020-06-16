@@ -10,7 +10,7 @@ var submitBtn=document.getElementById("submitBtn");
 var finalScoreSection=document.getElementById("finalScore");
 var goBackBtn=document.getElementById("goBackBtn");
 var clearBtn=document.getElementById("clearBtn");
-var highScoreSection=document.getElementById("#highScore");
+var highScoreSection=document.getElementById("highScore");
 
 var initialsInput = document.querySelector("#initials");
 var userinitialsSpan = document.querySelector("#user-initials");
@@ -87,9 +87,9 @@ function storeUser() {
       storeUser();
   });
 
-  clearBtn.addEventListener('click', function() {
-    localStorage.clear();
-   });
+//   clearBtn.addEventListener('click', function() {
+//     localStorage.clear();
+//    });
   
 
 // Timer Countdown
@@ -105,9 +105,9 @@ function startButtonHandler () {
    downloadTimer = setInterval(function(){
         if(timeleft <= 0){
           clearInterval(downloadTimer);
-          document.getElementById("countdown").innerHTML = "Finished";
+          document.getElementById("countdown").innerHTML = "Out of Time!";
         } else {
-          document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+          document.getElementById("countdown").innerHTML = "Score Tracker " + timeleft;
         }
         timeleft -= 1;
       }, 1000);
@@ -149,11 +149,11 @@ function goBackButtonHandler () {
     startSection.classList.remove("hide");
 }
 
- function clearButtonHandler () {
-    highScoreSection.className="hide";
-    startSection.classList.remove("hide");
+//  function clearButtonHandler () {
+//     highScoreSection.className="hide";
+//     startSection.classList.remove("hide");
     
- }
+//  }
 
 startBtn.addEventListener("click", startButtonHandler);
 answerBtn1.addEventListener("click", answerButtonHandler);
@@ -162,4 +162,4 @@ answerBtn3.addEventListener("click", answerButtonHandler);
 answerBtn4.addEventListener("click", answerButtonHandler);
 submitBtn.addEventListener("click", submitButtonHandler);
 goBackBtn.addEventListener("click", goBackButtonHandler);
-clearBtn.addEventListener("click", clearButtonHandler);
+// clearBtn.addEventListener("click", clearButtonHandler);

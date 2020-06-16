@@ -9,7 +9,7 @@
 
 <header>
     <!-- <a href="highScore" class="head-right">'Click' to View High Score</a> -->
-    <p class="head-left">Time: <span id="countdown"></span></p>
+    <p id="countdown"></p>
 </header>
 
 <body>
@@ -34,7 +34,7 @@
 <!--  Final Score -->
     <section id="finalScore" class="hide">
         <h2>All Done!</h2>
-        <h3>Your Final Score Is <span id="score"></span>.</h3>
+        <h3>Your Final Score Is <span id="countdown"></span>.</h3>
         <form method="POST">
             <div class="input-group">
               <label for="initials">Enter Initials:</label>
@@ -50,11 +50,11 @@
     </section>
 
 <!-- High Score -->
-    <section id="#highScore" class="hide">
+    <section id="highScore" class="hide">
         <h2>High Scores</h2>
-        <h3><span id="user-initials"></span> - <span id="countdown"></span></h3>
+        <h3><span id="user-initials"></span> <span id="countdown"></span></h3>
         <button class="buttons" id="goBackBtn">Go Back to Start</button>
-        <button class="buttons" id="clearBtn">Clear High Scores</button>
+        <!-- <button class="buttons" id="clearBtn">Clear High Scores</button> -->
         
     </section>
 

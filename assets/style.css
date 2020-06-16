@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*{
   box-sizing: border-box;
 }
 
@@ -9,31 +7,21 @@ body {
     text-align: left;
     margin: 50px;
     font-size: 24px;
-    padding: 25px 500px 100px;
-    
+    padding: 25px 300px 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 header {
-    display: inline;
-
-}
-
-.head-right {
-    text-align: right;
-    text-decoration: none;
-    font-size: 18px;
-    color: rgba(0,0,0,0.5);
-    /* display: inline; */
-}
-
-.head-left {
     text-align: left;
-    text-decoration: none;
     font-size: 18px;
     color: rgba(0,0,0,0.5);
-    /* display: inline; */
 }
 
+.hide {
+    display: none;
+}
 
 #start {
     text-align: center;
@@ -58,7 +46,7 @@ h2 {
 h3 {
     font-size: 34px;
     font-weight: lighter;
-    background: rgba(36, 36, 37, 0.2)
+    
     
 }
 
@@ -67,9 +55,10 @@ label {
     font-weight: lighter;
 }
 
-
-.hide {
-    display: none;
+input {
+    font-size: 34px;
+    font-weight: lighter;
+    width: 20%;
 }
 
 
@@ -91,3 +80,22 @@ button {
 
 
 
+@media (max-width: 690px) {
+    .btn {
+      font-size: 1rem;
+      margin: 16px 0px 0px 0px;
+      padding: 10px 15px;
+    }
+  
+    #password {
+      font-size: 1rem;
+      padding: 0px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .btn {
+      font-size: 0.8rem;
+      padding: 0px;
+    }
+  }
